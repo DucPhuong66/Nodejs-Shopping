@@ -1,0 +1,26 @@
+<section>
+    <div class="container">
+        <%- include ('../partials/messages') %>
+        <div class="row">
+            <div class="col-md-7 mt-5">
+                <div class="project-info-box mt-5">
+                    <h5><%=product.name%></h5>
+                    <p class="mb-0"><%=product.decription%></p>
+                </div><!-- / project-info-box -->
+    
+                <div class="project-info-box">
+                    <p class="mb-0 mt-3"><b>Price:</b><%=product.price%> vnd</p>
+                    <a href="/add-to-cart/<%=product._id%>" class="btn btn-danger mt-3">Add to Cart</a>
+                </div><!-- / project-info-box -->
+                
+            </div><!-- / column -->
+    
+            <div class="col-md-5">
+                <img src="<%=product.image%>" alt="project-image" class="detail-img">
+                <div class="project-info-box">
+                    <p><b>Categories:</b><%=product.type%></p>
+                </div><!-- / project-info-box -->
+            </div><!-- / column -->
+        </div>
+    </div>
+</section>

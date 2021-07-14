@@ -1,0 +1,81 @@
+<section>
+    <div class="container">
+        <%- include ('../partials/messages') %>
+        <% if (cart != null && !cart.paid) { %>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %> <% if(product != null) { %>
+                <tr>
+                    <td class="col-sm-8 col-md-6">
+                    <div class="media">
+                        <a class="thumbnail pull-left" href="/detail/<%=product.name%>"> <img class="media-object" src="<%=product.image%>" style="width: 72px; height: 72px;"> </a>
+                        <div class="media-body ml-2">
+                            <h4 class="media-heading"><a href="/detail/<%=product.name%>"><%=product.name%></a></h4>
+                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                        </div>
+                    </div></td>
+                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="<%=product.quantity%>">
+                    </td>
+                    <td class="col-sm-1 col-md-1 text-center"><strong><%=product.price%></strong></td>
+                    <td class="col-sm-1 col-md-1 text-center"><strong><%=product.totalPrice%></strong></td>
+                    <td class="col-sm-1 col-md-1">
+                    <a type="button" class="btn btn-danger" href="/remove-cart-item/<%=product._id%>">
+                        <span class="glyphicon glyphicon-remove"></span> Remove
+                    </a></td>
+                </tr>
+                <% } %> <% }) %>
+                <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h5>Subtotal</h5></td>
+                    <td class="text-right"><h5><strong><%=cart.totalCost%></strong></h5></td>
+                </tr>
+                <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h5>Estimated shipping</h5></td>
+                    <td class="text-right"><h5><strong>50000</strong></h5></td>
+                </tr>
+                <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h3>Total</h3></td>
+                    <td class="text-right"><h3><strong><%=cart.totalCost + 50000%></strong></h3></td>
+                </tr>
+                <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>
+                    <a type="button" class="btn btn-primary" href="/products">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                    </a></td>
+                    <td>
+                    <a type="button" class="btn btn-success" href="/checkout">
+                        Checkout <span class="glyphicon glyphicon-play"></span>
+                    </a></td>
+                </tr>
+            </tbody>
+        </table>
+        <% } else { %>
+            <div class="row text-center">
+              <div class="col-md-9 col-sm-9 m-auto">
+                <h2>No items in the cart</h2>
+              </div>
+            </div>
+        <% } %>
+    </div>
+</section>

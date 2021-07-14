@@ -39,11 +39,7 @@ app.use('/users', userRouter);
 
 
 // connect to DB
-mongoose.connect(
-  process.env.DB_CONNECTION, 
-  { useUnifiedTopology: true, useNewUrlParser: true , useCreateIndex: true, useFindAndModify: false}, 
-  () => console.log('Connected to DB')
-);
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

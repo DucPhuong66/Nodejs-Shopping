@@ -1,0 +1,43 @@
+<section>
+    <div class="container">
+      <div class="row">
+          <div class="col-8">
+            <form action="/checkout" method="POST">
+                  <h3>Billing Address</h3>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name" value="<%=user.name%>">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Email"  value="<%=user.email%>">
+                  </div>
+                  <div class="form-group">
+                    <label for="adr">Address</label>
+                    <input type="name" id="adr" name="address" class="form-control" placeholder="Address" value="<%=user.location%>">
+                  </div>
+          
+  
+                  <h3>Payment</h3>
+                  <label>
+                    <input type="radio" checked="checked" name="payment"> Ship COD
+                  </label>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-center" style="width: 100px;">Pay</button>
+                  </div>
+            </form>
+          </div>
+        
+          <div class="col-4">
+            <div class="container">
+              <h3>Cart</h3>
+              <% for (var i = 0; i < items.length; i++){ %>
+              <p><img src="<%=items[i].image%>" style="height: 70px; width: 70px; object-fit: cover;"><a href="#"><%=items[i].name%></a> <span class="quan"> x <%=items[i].quantity%></span> <span class="price" style="float: right; margin-top: 22px; font-weight: bold;"><%=items[i].price%></span></p>
+              <% } %>
+              <hr>
+              <p>Total: <span class="price" style="color:black; float: right; font-weight: bold;"><b><%=cart.totalCost%></b></span></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>

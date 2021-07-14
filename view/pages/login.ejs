@@ -1,0 +1,25 @@
+<section class="sign-in">
+    <%- include ('../partials/messages') %>
+    <form action="http://localhost:3000/users/login" method="POST">
+        <div class="container">
+                <div class="form-group">
+                <h2 class="text-center">Login</h2>
+                <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted text-center">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark btn-center">Login</button>
+                </div>
+                <br>
+                <div class="text-center">
+                    <p>You haven't registered yet? <a href="/users/register">Register</a>.</p>
+                </div>
+        </div>
+    </form>
+</section>

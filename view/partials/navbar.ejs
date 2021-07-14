@@ -1,0 +1,66 @@
+<div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <div class="btn-group">
+                        <a class="nav-link active" href="/products">
+                            Products
+                        </a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/products/Nike">Nike</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/products/Adidas">Adidas</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/products/Vans">Vans</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/products/Puma">Puma</a>
+                        </div>
+                    </div>
+                </li>
+                <% if(user){%>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/profile">Profile</a>
+                </li>
+                <% if (user.role == 'Admin') {%>
+                <li class="nav-item">
+                    <!-- here need to fix -->
+                    <a class="nav-link active" href="/dashboard">Manage</a>
+                </li>
+                <% } %>
+                <% } %>
+                
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">Waves</a>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="nav-link form-inline" action="http://localhost:3000/search" method="GET">
+                        <input class="form-control mr-sm-4" name="search" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart"><img class="bag" src="../../images/shopping-bag.png" height="30" alt="Bag"></a>
+                </li>
+                <% if (!user) { %>
+                    <li class="nav-item ml-4">
+                        <a href="/users/login" class="btn btn-dark btn-sm btn-login" role="button">Login</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item ml-4">
+                        <a href="/users/logout" class="btn btn-dark btn-sm btn-login" role="button">Logout</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+</div>
