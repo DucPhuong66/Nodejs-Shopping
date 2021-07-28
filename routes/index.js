@@ -34,8 +34,11 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-// Home Page
+//Home
 router.get('/', indexController.home);
+
+// Dashboard 
+router.get('/dashboard', ensureAuthenticated, ensureRole, admin.manage);
 
 // Profile
 router.get('/profile', ensureAuthenticated, indexController.profile);
@@ -43,6 +46,8 @@ router.get('/profile', ensureAuthenticated, indexController.profile);
 // POST: update info 
 router.post('/profile', upload.single('image'), indexController.updateInfo);
 
+
+//---------- Xu ly cart
 // GET: add a product to cart when add to cart
 router.get('/add-to-cart/:id', indexController.addToCart);
 
@@ -57,13 +62,10 @@ router.get('/checkout',  ensureAuthenticated, indexController.checkoutPage);
 
 // POST: checkout
 router.post('/checkout', indexController.checkout);
- 
-// Dashboard 
-router.get('/dashboard', ensureAuthenticated, ensureRole, admin.manage);
 
 
 
-// ----------------------------------------------
+
 //---------- User management
 // render page edit user admin
 router.get('/edit-user/:id', admin.editUserPage);
@@ -80,7 +82,7 @@ router.get('/add-user', ensureAuthenticated, ensureRole, admin.addPage);
 // POST: add user
 router.post('/add-user', admin.addUser);
 
-// ----------------------------------------------
+
 //---------- Product management
 router.get('/edit-product/:id', admin.editProductPage);
 

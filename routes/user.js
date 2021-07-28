@@ -1,24 +1,23 @@
-const express = require("express");
+const express = require('express');
 const userRouter = express.Router();
-const { forwardAuthenticated } = require("../config/auth");
 const userController = require("../controller/user");
+const { forwardAuthenticated } = require("../config/auth");
 
 
-// Register page
+//Register page
 userRouter.get('/register', forwardAuthenticated, userController.registerPage);
 
-// Login page
-userRouter.get('/login', forwardAuthenticated, userController.loginPage);
+//login page
+userRouter.get('/login', forwardAuthenticated, userController.loginPage)
 
-// Register
-userRouter.post('/register', userController.register);
+//register 
+userRouter.post('/register', userController.register)
 
-// Login
+//login
 userRouter.post('/login', userController.login);
 
-// Logout
+//logout
 userRouter.get('/logout', userController.logout);
 
 
-// export user router
 module.exports = userRouter;

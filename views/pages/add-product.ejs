@@ -1,0 +1,36 @@
+<section> 
+    <form action="http://localhost:3000/add-product" method="POST" enctype="multipart/form-data">
+        <div class="container">
+            <%- include ('../partials/messages') %>
+            <h2 class="text-center"> Add new Product </h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name" value="<%= typeof name != 'undefined' ? name : '' %>">
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" id="price" name="price" class="form-control" placeholder="Enter Price" value="<%= typeof phone != 'undefined' ? phone : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="decription">Decription</label>
+                <input type="text" id="decription" name="decription" class="form-control" placeholder="Enter Decription" value="<%= typeof email != 'undefined' ? email : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="type">brand</label>
+                <select name="brand" id="brand" class="form-control" value="<%= typeof role != 'undefined' ? role : '' %>">
+                    <option>Nike</option>
+                    <option>Aidas</option>
+                    <option>vans</option>
+                    <option>Puma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="img">Upload image</label>
+                <input name="img" id="img" type="file" class="text-center center-block file-upload form-control">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark btn-center">Add</button>
+            </div>
+        </div>
+      </form>
+</section>

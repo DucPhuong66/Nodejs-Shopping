@@ -1,0 +1,116 @@
+<div class="container">
+    <%- include ('../partials/messages') %>
+        <ul class="nav nav-tabs">
+            <li class="active mr-2"><a data-toggle="tab" href="#users">User Management</a></li>
+            <li><a data-toggle="tab" href="#products">Product Management</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="users"> 
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th class="text-center">Phone</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(users.length){ 
+                            for (var i = 0; i < users.length; i++){ %>
+                            <tr>
+                                <td class="col-sm-8 col-md-6">
+                                    <div class="media d-flex">
+                                        <a class="thumbnail pull-left" href=""> <img class="media-object" src="<%=users[i].image%>" style="width: 72px; height: 72px; object-fit: cover;"> </a>
+                                        <div class="media-body ml-2">
+                                            <h4 class="media-heading"><a href=""><%=users[i].name%></a></h4>
+                                            <span>Role: </span><span class="text-success"><strong><%=users[i].role%></strong></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-sm-1 col-md-1 align-self-center"><strong><%=users[i].email%></strong></td>
+                                <td class="col-sm-1 col-md-1"><strong><%=users[i].phone%></strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a type="button" class="btn btn-primary" href="/edit-user/<%=users[i]._id%>">
+                                        <span class="glyphicon glyphicon-remove"></span> Edit
+                                    </a>
+                                </td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a type="button" class="btn btn-danger" href="/remove-user/<%=users[i]._id%>">
+                                        <span class="glyphicon glyphicon-remove"></span> Remove
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <a type="button" class="btn btn-success" href="/add-user">
+                                        Add user <span class="glyphicon glyphicon-play"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <%} else if(users.length == 0) {%>
+                            <h2 class="notify-text">No users found</h2>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div><!--/tab-pane-->
+            <div class="tab-pane" id="products">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th class="text-center">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(products.length){ 
+                            for (var i = 0; i < products.length; i++){ %>
+                            <tr>
+                                <td class="col-sm-8 col-md-6">
+                                    <div class="media d-flex h-25">
+                                        <a class="thumbnail pull-left" href=""> <img class="media-object" src="<%=products[i].image%>" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body ml-2 align-self-center">
+                                            <h4 class="media-heading"><a href=""><%=products[i].name%></a></h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-sm-1 col-md-1"><strong><%=products[i].type%></strong></td>
+                                <td class="col-sm-1 col-md-1"><strong><%=products[i].price%></strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a type="button" class="btn btn-primary" href="/edit-product/<%=products[i]._id%>">
+                                        <span class="glyphicon glyphicon-remove"></span> Edit
+                                    </a>
+                                </td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a type="button" class="btn btn-danger" href="/remove-product/<%=products[i]._id%>">
+                                        <span class="glyphicon glyphicon-remove"></span> Remove
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <a type="button" class="btn btn-success" href="/add-product">
+                                        Add product <span class="glyphicon glyphicon-play"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% } else if(products.length == 0) {%>
+                            <h2 class="notify-text">No products found</h2>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+</div>

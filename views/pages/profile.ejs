@@ -1,0 +1,58 @@
+<div class="container">
+    <%- include ('../partials/messages') %>
+    <div class="row">
+  		<div class="col-sm-3 my-auto"><!--left col-->
+            <div class="text-center"><h4><%=user.name%></h4></div>
+            <div class="text-center">
+                <% if(user.image != 'undefined') {%>
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="width:200px;height:200px;object-fit: cover" alt="avatar">
+                <% } else { %>
+                <img src="<%=user.image%>" class="avatar img-circle img-thumbnail" style="width:200px;height:200px;object-fit: cover" alt="avatar">
+                <% } %>
+                <h6>Upload a different photo</h6>
+                <input form="update" name="image" type="file" class="text-center center-block file-upload form-control">
+                
+            </div></hr><br>
+        </div><!--/col-3-->
+
+    	<div class="col-sm-9">
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                  <form class="form" action="/profile" method="post" id="update" enctype='multipart/form-data'>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="name"><h4>Name</h4></label>
+                              <input type="text" class="form-control" name="name" id="name" placeholder="Name" title="enter your last name if any." value="<%=user.name%>">
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h4>Phone</h4></label>
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any." value="<%=user.phone%>">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Email</h4></label>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="<%=user.email%>" readonly>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit">Save your edits</button>
+                            </div>
+                      </div>
+              	</form>
+              <hr>
+             </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->

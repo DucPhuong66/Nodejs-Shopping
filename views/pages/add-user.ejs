@@ -1,0 +1,34 @@
+<section> 
+    <form action="http://localhost:3000/add-user" method="POST">
+        <div class="container">
+            <%- include ('../partials/messages') %>
+            <h2 class="text-center"> Add new User </h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name" value="<%= typeof name != 'undefined' ? name : '' %>">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="phone" id="phone" name="phone" class="form-control" placeholder="Enter Phone" value="<%= typeof phone != 'undefined' ? phone : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" value="<%= typeof email != 'undefined' ? email : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select name="role" id="role" class="form-control" value="<%= typeof role != 'undefined' ? role : '' %>">
+                    <option>User</option>
+                    <option>Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark btn-center">Add</button>
+            </div>
+        </div>
+      </form>
+</section>

@@ -43,7 +43,6 @@ module.exports = {
             await User.findByIdAndUpdate({_id: req.params.id}, 
                 {
                     name: req.body.name,
-                    location: req.body.location,
                     phone: req.body.phone,
                     role: req.body.role
                 }, function (err) {
@@ -57,7 +56,6 @@ module.exports = {
             await User.findByIdAndUpdate({_id: req.params.id}, 
                 {
                     name: req.body.name,
-                    location: req.body.location,
                     phone: req.body.phone,
                     role: req.body.role,
                     image: '/'.concat(req.file.path.replace(/\\/g,'/'))
@@ -76,10 +74,10 @@ module.exports = {
     },
     // add user post
     addUser: function(req, res){
-        const { name, phone, email, role,location, password } = req.body;
+        const { name, phone, email, role, password } = req.body;
         let errors = [];
 
-        if (!name || !phone || !role || !email || !location || !password ) {
+        if (!name || !phone || !role || !email  || !password ) {
             errors.push({msg: 'Please enter all fields'});
         }
 
@@ -95,7 +93,6 @@ module.exports = {
                 phone,
                 email,
                 role,
-                location,
                 password,
             });
         } else {
@@ -109,7 +106,6 @@ module.exports = {
                         phone,
                         email,
                         role,
-                        location,
                         password,
                     });
                 } else {
@@ -118,7 +114,6 @@ module.exports = {
                         phone,
                         email,
                         role,
-                        location,
                         password
                     });
 
@@ -161,7 +156,7 @@ module.exports = {
                     name: req.body.name,
                     price: req.body.price,
                     decription: req.body.decription,
-                    type: req.body.type
+                    brand: req.body.brand
                 }, function (err) {
                     if (err) res.json(err);
                     else {
@@ -175,7 +170,7 @@ module.exports = {
                     name: req.body.name,
                     price: req.body.price,
                     decription: req.body.decription,
-                    type: req.body.type,
+                    brand: req.body.brand,
                     image: req.file.path.replace(/\\/g,'/')
                 }, function (err) {
                     if (err) res.json(err);
@@ -205,17 +200,9 @@ module.exports = {
 
     //
     addProduct: function(req, res){
-        const { name, price, decription, type } = req.body;
+        const { name, price, decription, brand } = req.body;
         let errors = [];
-
-        if (!name || !price || !decription || !type ) {
-            errors.push({msg: 'Please enter all fields'});
-        }
-
-        if (decription.length < 6) {
-            errors.push({msg: 'Password must be at least 6 characters'});
-        }
-
+        //
         if (errors.length > 0) {
             res.render('pages/add-product', {
                 title: 'Add product',
@@ -223,14 +210,14 @@ module.exports = {
                 name,
                 price,
                 decription,
-                type
+                brand,
             });
         } else {
             const newProduct = new Product({
                 name,
                 price,
                 decription,
-                type,
+                brand,
                 image: '/'.concat(req.file.path.replace(/\\/g,'/'))
             });
             newProduct
@@ -238,7 +225,7 @@ module.exports = {
                 .then(product => {
                     req.flash(
                         'success_msg',
-                        'Add user successfully'
+                        'Add product successfully'
                     );
                     res.redirect('/dashboard');
                 })
